@@ -5,10 +5,46 @@
 		"factoryName": {
 			"value": "adf236"
 		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStoragedataflow_accountKey": {
+			"value": ""
+		},
 		"linkedservice_1gen2_accountKey": {
 			"value": ""
 		},
+		"metadacopylink_accountKey": {
+			"value": ""
+		},
+		"metadataldestlink_accountKey": {
+			"value": ""
+		},
+		"metadatasoucelink_accountKey": {
+			"value": ""
+		},
+		"sink_data_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://bashasa.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStoragedataflow_properties_typeProperties_url": {
+			"value": "https://bashasa.dfs.core.windows.net/"
+		},
 		"linkedservice_1gen2_properties_typeProperties_url": {
+			"value": "https://bashasa.dfs.core.windows.net/"
+		},
+		"metadacopylink_properties_typeProperties_url": {
+			"value": "https://bashasa.dfs.core.windows.net/"
+		},
+		"metadataldestlink_properties_typeProperties_url": {
+			"value": "https://bashasa.dfs.core.windows.net/"
+		},
+		"metadatasoucelink_properties_typeProperties_url": {
+			"value": "https://bashasa.dfs.core.windows.net/"
+		},
+		"sink_data_properties_typeProperties_url": {
 			"value": "https://bashasa.dfs.core.windows.net/"
 		},
 		"source_git_linked_properties_typeProperties_url": {
