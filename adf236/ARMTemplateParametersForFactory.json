@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf236"
+		},
+		"linkedservice_1gen2_accountKey": {
+			"value": ""
+		},
+		"linkedservice_1gen2_properties_typeProperties_url": {
+			"value": "https://bashasa.dfs.core.windows.net/"
+		},
+		"source_git_linked_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com"
+		}
+	}
+}
