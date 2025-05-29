@@ -1,0 +1,24 @@
+{
+	"name": "manual",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Managerfiles",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/inbound/blobs/csvf_iles/Fact_Sales_1",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/acdb5533-07de-4167-8ce3-fafb428c4424/resourceGroups/RG/providers/Microsoft.Storage/storageAccounts/bashasa",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
