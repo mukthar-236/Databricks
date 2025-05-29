@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "csvf_iles",
 				"fileSystem": "inbound"
 			},
 			"columnDelimiter": ",",
