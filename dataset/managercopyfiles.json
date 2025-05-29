@@ -10,6 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "Fact_Sales_1",
+				"folderPath": "csv_files",
 				"fileSystem": "inbound"
 			},
 			"columnDelimiter": ",",
