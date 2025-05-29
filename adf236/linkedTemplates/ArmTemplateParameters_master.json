@@ -50,6 +50,9 @@
 		"source_git_linked_properties_typeProperties_url": {
 			"value": "https://raw.githubusercontent.com"
 		},
+		"manual_properties_typeProperties_scope": {
+			"value": "/subscriptions/acdb5533-07de-4167-8ce3-fafb428c4424/resourceGroups/RG/providers/Microsoft.Storage/storageAccounts/bashasa"
+		},
 		"containerUri": {
 			"value": ""
 		},
