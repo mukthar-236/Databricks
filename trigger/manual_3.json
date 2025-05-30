@@ -13,7 +13,7 @@
 		],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
-			"blobPathBeginsWith": "/inbound/blobs/csv_files/Fact_Sales_1.csv",
+			"blobPathBeginsWith": "/inbound/blobs/'csv_files/Fact_Sales_1.csv'",
 			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/acdb5533-07de-4167-8ce3-fafb428c4424/resourceGroups/RG/providers/Microsoft.Storage/storageAccounts/bashasa",
 			"events": [
