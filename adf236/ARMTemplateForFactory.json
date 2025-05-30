@@ -67,7 +67,7 @@
 			"type": "string",
 			"defaultValue": "https://raw.githubusercontent.com"
 		},
-		"manual_properties_typeProperties_scope": {
+		"Manual_2_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/acdb5533-07de-4167-8ce3-fafb428c4424/resourceGroups/RG/providers/Microsoft.Storage/storageAccounts/bashasa"
 		}
@@ -338,6 +338,117 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DelimitedText1')]",
 				"[concat(variables('factoryId'), '/datasets/DelimitedText2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/copyitemchecking')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "first_copy",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "first_source_dataset",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "first_sink_dataset",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Delete1",
+						"type": "Delete",
+						"dependsOn": [
+							{
+								"activity": "first_copy",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "managercopyfiles",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"enableLogging": false,
+							"storeSettings": {
+								"type": "AzureBlobFSReadSettings",
+								"recursive": true,
+								"enablePartitionDiscovery": false
+							}
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/first_source_dataset')]",
+				"[concat(variables('factoryId'), '/datasets/first_sink_dataset')]",
+				"[concat(variables('factoryId'), '/datasets/managercopyfiles')]"
 			]
 		},
 		{
@@ -892,7 +1003,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"fileName": "Fact_Sales_1.csv",
-						"folderPath": "csvf_iles",
+						"folderPath": "csv_files",
 						"fileSystem": "inbound"
 					},
 					"columnDelimiter": ",",
@@ -961,7 +1072,8 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"folderPath": "csvf_iles",
+						"fileName": "Fact_Sales_1.csv",
+						"folderPath": "csv_files",
 						"fileSystem": "inbound"
 					},
 					"columnDelimiter": ",",
@@ -1333,7 +1445,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/manual')]",
+			"name": "[concat(parameters('factoryName'), '/Manual_2')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1342,7 +1454,7 @@
 				"pipelines": [
 					{
 						"pipelineReference": {
-							"referenceName": "Managerfiles",
+							"referenceName": "copyitemchecking",
 							"type": "PipelineReference"
 						},
 						"parameters": {}
@@ -1350,16 +1462,16 @@
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/inbound/blobs/csvf_iles/Fact_Sales_1.csv",
+					"blobPathBeginsWith": "/inbound/blobs/csv_files/Fact_Sales_1.csv",
 					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('manual_properties_typeProperties_scope')]",
+					"scope": "[parameters('Manual_2_properties_typeProperties_scope')]",
 					"events": [
 						"Microsoft.Storage.BlobCreated"
 					]
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/Managerfiles')]"
+				"[concat(variables('factoryId'), '/pipelines/copyitemchecking')]"
 			]
 		},
 		{

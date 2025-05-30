@@ -484,7 +484,7 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"fileName": "Fact_Sales_1.csv",
-						"folderPath": "csvf_iles",
+						"folderPath": "csv_files",
 						"fileSystem": "inbound"
 					},
 					"columnDelimiter": ",",
@@ -553,7 +553,8 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"folderPath": "csvf_iles",
+						"fileName": "Fact_Sales_1.csv",
+						"folderPath": "csv_files",
 						"fileSystem": "inbound"
 					},
 					"columnDelimiter": ",",

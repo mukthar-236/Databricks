@@ -67,7 +67,7 @@
 			"type": "string",
 			"defaultValue": "https://raw.githubusercontent.com"
 		},
-		"manual_properties_typeProperties_scope": {
+		"Manual_2_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/acdb5533-07de-4167-8ce3-fafb428c4424/resourceGroups/RG/providers/Microsoft.Storage/storageAccounts/bashasa"
 		},
@@ -161,8 +161,8 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"manual_properties_typeProperties_scope": {
-						"value": "[parameters('manual_properties_typeProperties_scope')]"
+					"Manual_2_properties_typeProperties_scope": {
+						"value": "[parameters('Manual_2_properties_typeProperties_scope')]"
 					}
 				}
 			},
