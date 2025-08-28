@@ -1,0 +1,9 @@
+{
+	"name": "azureproject236",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "4a31db88-9a4e-4296-b669-a47a57891242",
+		"tenantId": "cf128933-7477-4489-a20d-6833cb43663b"
+	}
+}
