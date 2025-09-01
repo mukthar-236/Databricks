@@ -1,0 +1,66 @@
+{
+	"name": "Filter_pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Filter variables",
+				"type": "Filter",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('silver')",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@contains(item(),'customer')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Filter parametes",
+				"type": "Filter",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.silver",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@greater(item(),3)",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"silver": {
+				"type": "array",
+				"defaultValue": [
+					1,
+					2,
+					3,
+					4,
+					5,
+					6
+				]
+			}
+		},
+		"variables": {
+			"silver": {
+				"type": "Array",
+				"defaultValue": [
+					"customer",
+					"products",
+					"orders",
+					"regions"
+				]
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-09-01T09:25:38Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
