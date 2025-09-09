@@ -1,22 +1,19 @@
 {
-	"name": "metadataset",
+	"name": "todaydest09",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "metadatasoucelink",
+			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
-		"type": "DelimitedText",
+		"type": "Parquet",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "delta_tables",
+				"folderPath": "dest_tables",
 				"fileSystem": "bronze"
 			},
-			"columnDelimiter": ",",
-			"escapeChar": "\\",
-			"firstRowAsHeader": true,
-			"quoteChar": "\""
+			"compressionCodec": "snappy"
 		},
 		"schema": []
 	}

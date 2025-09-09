@@ -1,8 +1,8 @@
 {
-	"name": "metadataset",
+	"name": "Todaysrc09",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "metadatasoucelink",
+			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],

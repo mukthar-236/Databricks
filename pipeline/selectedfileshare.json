@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "metadataset",
+						"referenceName": "Today",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -58,7 +58,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@startswith(item().name,'Fact')",
+									"value": "@startswith(item().name,'Fact_orders')",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
@@ -80,6 +80,8 @@
 												"storeSettings": {
 													"type": "AzureBlobFSReadSettings",
 													"recursive": true,
+													"wildcardFolderPath": "delta_tables",
+													"wildcardFileName": "Fact_orders",
 													"enablePartitionDiscovery": false
 												},
 												"formatSettings": {
@@ -109,26 +111,14 @@
 										},
 										"inputs": [
 											{
-												"referenceName": "metadatacopylink",
-												"type": "DatasetReference",
-												"parameters": {
-													"p_file_name": {
-														"value": "@item().name",
-														"type": "Expression"
-													}
-												}
+												"referenceName": "Today",
+												"type": "DatasetReference"
 											}
 										],
 										"outputs": [
 											{
-												"referenceName": "metadatadesllink",
-												"type": "DatasetReference",
-												"parameters": {
-													"p_file_name": {
-														"value": "@item().name",
-														"type": "Expression"
-													}
-												}
+												"referenceName": "Today",
+												"type": "DatasetReference"
 											}
 										]
 									}
@@ -141,6 +131,8 @@
 			{
 				"name": "Data flow1",
 				"type": "ExecuteDataFlow",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "foreachmeta",
