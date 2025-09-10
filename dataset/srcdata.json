@@ -1,0 +1,41 @@
+{
+	"name": "srcdata",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "seplink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "orders_initial.csv",
+				"folderPath": "src",
+				"fileSystem": "adf"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "dept",
+				"type": "String"
+			},
+			{
+				"name": "usa",
+				"type": "String"
+			},
+			{
+				"name": "india",
+				"type": "String"
+			}
+		]
+	}
+}
